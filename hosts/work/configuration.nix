@@ -88,8 +88,8 @@
     vulkan-tools
   ];
 
-  networking.firewall.allowedTCPPorts = [50000 53962 51319 32771 40668 54156 8080 80 50922 5000 3000];
-  networking.firewall.allowedUDPPorts = [50000 56787 51319 32771 40668 38396 46223 8080 80 50922 5000 3000];
+  networking.firewall.allowedTCPPorts = [22 50000 53962 51319 32771 40668 54156 8080 80 50922 5000 3000];
+  networking.firewall.allowedUDPPorts = [22 50000 56787 51319 32771 40668 38396 46223 8080 80 50922 5000 3000];
   networking.firewall.extraCommands = ''iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns'';
   networking.firewall.enable = false;
   services.samba-wsdd.enable = true;
@@ -112,6 +112,7 @@
   virtualisation.docker.enable = true;
   # virtualisation.docker.enableNvidia = true;
 
+  services.openssh.enable = true;
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
   services.flatpak.enable = true;
